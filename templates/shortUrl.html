@@ -1,0 +1,9 @@
+{% extends 'home.html'%}
+
+{% block content %}
+
+        <a href="{% url 'home'%}" class="bg-gray-200 rounded-lg p-1 w-[100px]">< Go Back</a>
+        <p>{{new_model.link}}</p>
+
+        <p id="shortLink" class="cursor-pointer" >{{new_model.short_link}}</p> <button class="bg-blue-300" onclick="copyText()">Copy</button>
+{% endblock content %}

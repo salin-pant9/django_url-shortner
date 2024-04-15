@@ -5,15 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Url Shortner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-   <h1>Url Shortner</h1> 
+<body class="flex items-center justify-center h-screen bg-green-300 ">
+    <div class="flex flex-col gap-5 border p-5 rounded-xl border-2 bg-gray-300 shadow-xl">
 
-   <form action="" method="post">
-    {%csrf_token%}
-    <p>{{form.link}}</p>
-    <p>short Url: {{form.short_link}}</p>
-    <button type="submit">Submit</button>
-   </form>
+        <h1 class="font-bold text-center capitalize text-2rem">Url Shortner</h1> 
+     
+        {% if new_model %}
+     
+        {% block content %}
+        {%endblock content %}
+        {%else %}
+     
+        <form action="" method="post" class="flex flex-col gap-y-3 w-full ">
+         {%csrf_token%}
+         {{form.as_p}}
+     
+         <button  class="bg-blue-400 text-white font-bold rounded-lg" type="submit">Submit</button>
+        </form>
+        {% endif %}
+    </div>
+    <script>
+        function copyText() {
+            let shortLink = document.getElementById("shortLink").innerHTML;
+            navigator.clipboard.writeText(shortLink);
+            alert('Text copied');
+            
+        }
+    </script>
 </body>
 </html/>
